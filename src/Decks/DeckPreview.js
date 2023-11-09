@@ -46,7 +46,7 @@ function DeckPreview({ deck, loadDeck }) {
               <Link to={`${url}/edit`} className="btn btn-secondary">
                 Edit
               </Link>
-              <Link to={`${url}/study`} className="btn btn-primary mx-1">
+              <Link to={`/decks/${deck.id}/study`} className="btn btn-primary mx-1">
                 Study
               </Link>
               <Link to={`${url}/cards/new`} className="btn btn-primary">

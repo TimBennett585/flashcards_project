@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import {
   Route,
-  Link,
   Switch,
   useRouteMatch,
-  useHistory,
-  Redirect,
   useParams,
 } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Study from "../Study/Study";
 import DeckPreview from "./DeckPreview";
+import AddCard from "../Cards/AddCard";
+import EditCard from "../Cards/EditCard";
+import EditDeck from "./EditDeck";
+import NotFound from "../Layout/NotFound";
 
 /* This component controls the state of deck, and makes the API calls */
 
@@ -37,19 +38,22 @@ function Deck() {
   return (
     <div>
       <Switch>
-        {/* Deck information here (header and description) */
-        /* Buttons: Edit, Study, Add Cards, and Trash/Delete */}
-        <DeckPreview deck={deck} />
-        {/* Cards Header */
-        /* .map on deck cards showing the following info
-      Front and Back text
-  Buttons: Edit and Delete */}
-        <Route to="/decks/:deckId/study">
+        <Route path={`/decks/${deck.id}/study`}>
           <Study deck={deck} />
         </Route>
-        {/* </CardList> (contains the .map) */
-        /* </EditCards> */
-        /* </AddCards> */}
+        <Route path={`${path}/cards/new`}>
+          <AddCard deck={deck} loadDeck={loadDeck} />
+        </Route>
+        <Route path={`${path}/cards/:cardId/edit`}>
+          <EditCard deck={deck} loadDeck={loadDeck} />
+        </Route>
+        <Route path={`${path}/edit`}>
+          <EditDeck deck={deck} loadDeck={loadDeck} />
+        </Route>
+        <DeckPreview deck={deck} />
+        <Route path="/notFound" >
+          <NotFound />
+        </Route>
       </Switch>
     </div>
   );

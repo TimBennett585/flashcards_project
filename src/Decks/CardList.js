@@ -34,7 +34,7 @@ function CardList({ deck, loadDeck }) {
                 </Link>
                 <button
                   type="delete"
-                  onClick={handleDeleteCard(card={card})}
+                  onClick={() => handleDeleteCard(card)}
                   className="btn btn-danger"
                 >
                   Delete
