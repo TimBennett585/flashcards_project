@@ -6,7 +6,7 @@ function DeckView({ deck, loadDecks }) {
   if (deck) {
     function handleDelete() {
       const abortController = new AbortController();
-      const result = window.confirm("Delete this deck");
+      const result = window.confirm("Delete this deck?");
       if (result) {
         deleteDeck(deck.id, abortController.signal).then(loadDecks);
       }
