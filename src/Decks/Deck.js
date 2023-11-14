@@ -50,7 +50,7 @@ function Deck() {
         <Route path={`${path}/edit`}>
           <EditDeck deck={deck} loadDeck={loadDeck} />
         </Route>
-        <DeckPreview deck={deck} />
+        <DeckPreview deck={deck} loadDeck={loadDeck} />
         <Route path="/notFound" >
           <NotFound />
         </Route>

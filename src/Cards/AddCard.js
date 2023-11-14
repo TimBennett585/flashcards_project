@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { createCard } from "../utils/api";
+import CardForm from "./CardForm";
 
 function AddCard({ deck, loadDeck }) {
   const { deckId } = useParams();
@@ -52,42 +53,14 @@ function AddCard({ deck, loadDeck }) {
         </div>
         <div className="row">
           <div className="col">
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="front">
-                        Front
-                        <textarea
-                            id="front"
-                            name="front"
-                            required
-                            placeholder="Front side of card"
-                            onChange={handleChange}
-                            value={newCard.front}
-                            className="form-control"
-                        />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="back">
-                        Front
-                        <textarea
-                            id="back"
-                            name="back"
-                            required
-                            placeholder="Back side of card"
-                            onChange={handleChange}
-                            value={newCard.back}
-                            className="form-control"
-                        />
-                    </label>
-                </div>
-                <Link to={`/decks/${deck.id}`} className="btn btn-secondary mx-1">
-                    Done
-                </Link>
-                <button type="submit" className="btn btn-primary">
-                    Save
-                </button>
-            </form>
+            <CardForm 
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              newCard={newCard}
+              deckId={deckId}
+              setNewCard={setNewCard}
+              isEdit={false}
+              />
           </div>
         </div>
       </div>
